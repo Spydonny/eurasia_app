@@ -6,7 +6,7 @@ import { getNavItemsForRole } from '@/config/navigation';
 export function BottomNav() {
   const { t } = useTranslation();
   const { user } = useAuth();
-  const navItems = getNavItemsForRole(user?.role).slice(0, 5);
+  const navItems = getNavItemsForRole(user?.role);
 
   return (
     <nav className="bottom-nav">
