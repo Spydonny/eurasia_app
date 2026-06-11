@@ -195,7 +195,7 @@ export async function getRoomMessages(roomId: string, limit = 50, skip = 0): Pro
 
 export function getWsUrl(): string {
   const token = localStorage.getItem('access_token');
-  const base = import.meta.env.VITE_WS_URL || 'ws://localhost:8000';
+  const base = import.meta.env.VITE_WS_URL || 'wss://backend-lilac-shape-6331.fly.dev';
   return `${base}/chat/ws?token=${token}`;
 }
 
@@ -315,7 +315,7 @@ export async function markAllNotificationsRead(): Promise<{ message: string }> {
 
 export function getNotificationWsUrl(): string {
   const token = localStorage.getItem('access_token');
-  const base = import.meta.env.VITE_WS_URL || 'ws://localhost:8000';
+  const base = import.meta.env.VITE_WS_URL || 'wss://backend-lilac-shape-6331.fly.dev';
   return `${base}/notifications/ws?token=${token}`;
 }
 
