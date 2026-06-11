@@ -186,7 +186,10 @@
       "university": "Университет / место учёбы",
       "social_links": "Соцсети"
     },
-    "save": "Сохранить изменения"
+    "save": "Сохранить изменения",
+    "details": "Маалымат",
+    "member_since": "Биз менен {{date}}",
+    "email": "Эл. почта"
   },
   "tokens": {
     "title": "Токендер",
@@ -285,7 +288,9 @@
     "time_just_now": "только что",
     "time_minutes": "{{m}} мин. назад",
     "time_hours": "{{h}} ч. назад",
-    "time_days": "{{d}} дн. назад"
+    "time_days": "{{d}} дн. назад",
+    "tab_event_chats": "Иш-чара чаттары",
+    "tab_direct_messages": "Жеке билдирүүлөр"
   },
   "notifications": {
     "title": "Уведомления",

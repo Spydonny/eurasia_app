@@ -186,7 +186,10 @@
       "university": "Университет / место учёбы",
       "social_links": "Соцсети"
     },
-    "save": "Сохранить изменения"
+    "save": "Сохранить изменения",
+    "details": "Інфармацыя",
+    "member_since": "З намі з {{date}}",
+    "email": "Эл. пошта"
   },
   "tokens": {
     "title": "Токены",
@@ -285,7 +288,9 @@
     "time_just_now": "только что",
     "time_minutes": "{{m}} мин. назад",
     "time_hours": "{{h}} ч. назад",
-    "time_days": "{{d}} дн. назад"
+    "time_days": "{{d}} дн. назад",
+    "tab_event_chats": "Чаты мерапрыемстваў",
+    "tab_direct_messages": "Асабістыя паведамленні"
   },
   "notifications": {
     "title": "Уведомления",

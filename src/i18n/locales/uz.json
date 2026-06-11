@@ -186,7 +186,10 @@
       "university": "Университет / место учёбы",
       "social_links": "Соцсети"
     },
-    "save": "Сохранить изменения"
+    "save": "Сохранить изменения",
+    "details": "Ma'lumot",
+    "member_since": "{{date}} dan beri",
+    "email": "E-pochta"
   },
   "tokens": {
     "title": "Tokenlar",
@@ -285,7 +288,9 @@
     "time_just_now": "только что",
     "time_minutes": "{{m}} мин. назад",
     "time_hours": "{{h}} ч. назад",
-    "time_days": "{{d}} дн. назад"
+    "time_days": "{{d}} дн. назад",
+    "tab_event_chats": "Tadbir chatlari",
+    "tab_direct_messages": "Shaxsiy xabarlar"
   },
   "notifications": {
     "title": "Уведомления",

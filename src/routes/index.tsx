@@ -21,7 +21,6 @@ import { OnboardingPage } from '@/pages/OnboardingPage';
 import { MissionsPage } from '@/pages/MissionsPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 import { FriendsPage } from '@/pages/FriendsPage';
-import { MessagesPage } from '@/pages/MessagesPage';
 import { DialogPage } from '@/pages/DialogPage';
 import { AchievementsPage } from '@/pages/AchievementsPage';
 import { LeaderboardPage } from '@/pages/LeaderboardPage';
@@ -62,13 +61,13 @@ export const router = createBrowserRouter([
       { path: 'events/:id/edit', element: <EditEventPage /> },
       { path: 'tokens', element: <TokensPage /> },
       { path: 'missions', element: <MissionsPage /> },
-      { path: 'chats', element: <ChatPage /> },
+      { path: 'chats', element: <ChatPage initialTab="chats" /> },
       { path: 'chat/event/:eventId', element: <EventChatPage /> },
       { path: 'profile', element: <ProfilePage /> },
       { path: 'profile/edit', element: <EditProfilePage /> },
       { path: 'privacy', element: <PrivacySettingsPage /> },
       { path: 'friends', element: <FriendsPage /> },
-      { path: 'messages', element: <MessagesPage /> },
+      { path: 'messages', element: <ChatPage initialTab="messages" /> },
       { path: 'messages/:dialogId', element: <DialogPage /> },
       { path: 'achievements', element: <AchievementsPage /> },
       { path: 'leaderboard', element: <LeaderboardPage /> },

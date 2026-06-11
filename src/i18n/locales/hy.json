@@ -186,7 +186,10 @@
       "university": "Университет / место учёбы",
       "social_links": "Соцсети"
     },
-    "save": "Сохранить изменения"
+    "save": "Сохранить изменения",
+    "details": "Տվյալներ",
+    "member_since": "Մեզ հետ {{date}}-ից",
+    "email": "Էլ. փոստ"
   },
   "tokens": {
     "title": "Թոքեններ",
@@ -285,7 +288,9 @@
     "time_just_now": "только что",
     "time_minutes": "{{m}} мин. назад",
     "time_hours": "{{h}} ч. назад",
-    "time_days": "{{d}} дн. назад"
+    "time_days": "{{d}} дн. назад",
+    "tab_event_chats": "Միջոցառումների չաթեր",
+    "tab_direct_messages": "Անձնական հաղորդագրություններ"
   },
   "notifications": {
     "title": "Уведомления",

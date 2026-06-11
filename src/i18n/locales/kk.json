@@ -186,7 +186,10 @@
       "university": "Университет / оқу орны",
       "social_links": "Әлеуметтік желілер"
     },
-    "save": "Өзгерістерді сақтау"
+    "save": "Өзгерістерді сақтау",
+    "details": "Ақпарат",
+    "member_since": "Бізбен бірге {{date}}",
+    "email": "Эл. пошта"
   },
   "tokens": {
     "title": "Токендер",
@@ -285,7 +288,9 @@
     "time_just_now": "дәл қазір",
     "time_minutes": "{{m}} мин. бұрын",
     "time_hours": "{{h}} сағ. бұрын",
-    "time_days": "{{d}} күн бұрын"
+    "time_days": "{{d}} күн бұрын",
+    "tab_event_chats": "Іс-шара чаттары",
+    "tab_direct_messages": "Жеке хабарлар"
   },
   "notifications": {
     "title": "Хабарландырулар",
