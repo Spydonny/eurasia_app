@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://backend-lilac-shape-6331.fly.dev';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://backend-lilac-shape-6331.fly.dev/';
 
 const client = axios.create({
   baseURL: API_BASE_URL,
