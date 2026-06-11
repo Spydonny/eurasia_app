@@ -15,7 +15,8 @@ export type {
   EventParticipant,
 } from './user';
 export { ROLE_HIERARCHY, hasMinRole, ROLE_LABELS } from './user';
-export type { Mission, MissionProgress, MissionWithProgress } from './mission';
+export type { Mission, MissionProgress, MissionWithProgress, MissionSubmission, MissionSubmissionStatus } from './mission';
+export type { ProfileRewardRule, AdminTokenTransaction } from './admin';
 export type { ChatRoom, ChatMessage } from './chat';
 export type { MarketplaceItem, Purchase } from './marketplace';
 export { ITEM_TYPE_LABELS, ITEM_TYPE_ICONS } from './marketplace';

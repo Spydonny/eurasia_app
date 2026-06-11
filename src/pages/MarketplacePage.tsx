@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { listMarketplaceItems, buyMarketplaceItem, getMyPurchases, getTokenBalance } from '@/api';
 import { useAuth } from '@/hooks/useAuth';
 import type { MarketplaceItem } from '@/types';
-import { ITEM_TYPE_LABELS } from '@/types';
+import { ITEM_TYPE_LABELS, ITEM_TYPE_ICONS } from '@/types';
 import { Icons } from '@/components/ui';
 
 const TYPES = ['', 'badge', 'title', 'powerup', 'customization'];
@@ -101,7 +101,13 @@ export function MarketplacePage() {
                 key={item.id}
                 className={`item-card ${owned ? 'item-card--owned' : ''} ${soldOut ? 'item-card--soldout' : ''}`}
               >
-                <div className="item-card__icon">{item.icon}</div>
+                <div className="item-card__icon">
+                  {item.image ? (
+                    <img src={item.image} alt={item.name} className="item-card__image" />
+                  ) : (
+                    ITEM_TYPE_ICONS[item.type] || '🎁'
+                  )}
+                </div>
                 <h3 className="item-card__name">{item.name}</h3>
                 <p className="item-card__desc">{item.description}</p>
 

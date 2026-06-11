@@ -111,6 +111,7 @@ export function RegisterPage() {
     <div className="auth-page">
       <Card className="auth-form">
         <div className="auth-form__header">
+          <img src="/logo.png" alt={t('app.name')} className="auth-form__logo" />
           <h1 className="auth-form__title">{t('auth.create_account')}</h1>
           <p className="auth-form__subtitle">{t(SUBTITLE_KEYS[role])}</p>
         </div>

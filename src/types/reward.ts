@@ -22,7 +22,6 @@ export interface Reward {
   max_per_user: number;
   available: boolean;
   image_url: string;
-  icon: string;
   metadata: Record<string, unknown>;
   expiration_days: number;
   created_at: string;
@@ -38,6 +37,7 @@ export interface RewardRedemption {
   partner_id: string;
   price_paid: number;
   status: string;
+  issued_code?: string;
   notes: string;
   reviewed_by: string;
   reviewed_at: string;

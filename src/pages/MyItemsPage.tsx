@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { getMyPurchases } from '@/api';
 import type { Purchase } from '@/types';
-import { ITEM_TYPE_LABELS } from '@/types';
+import { ITEM_TYPE_LABELS, ITEM_TYPE_ICONS } from '@/types';
 import { Icons } from '@/components/ui';
 
 export function MyItemsPage() {
@@ -44,7 +44,9 @@ export function MyItemsPage() {
       <div className="items-list">
         {purchases.map((p) => (
           <div key={p.id} className="purchase-item">
-            <span className="purchase-item__icon">{p.icon}</span>
+            <span className="purchase-item__icon">
+              {p.image ? <img src={p.image} alt={p.item_name} className="purchase-item__image" /> : (ITEM_TYPE_ICONS[p.item_type] || '🎁')}
+            </span>
             <div className="purchase-item__info">
               <div className="purchase-item__name">{p.item_name}</div>
               <div className="purchase-item__type">{ITEM_TYPE_LABELS[p.item_type] || p.item_type}</div>

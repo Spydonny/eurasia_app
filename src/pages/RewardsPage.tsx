@@ -170,6 +170,11 @@ export function RewardsPage() {
                   <div className="token-row__info">
                     <span className="token-row__type">{red.reward_name}</span>
                     <span className="token-row__desc" style={{ display: 'inline-flex', alignItems: 'center', gap: 3 }}><Icons.balance size={12} /> {red.price_paid}</span>
+                    {red.issued_code && (
+                      <span className="redemption-code" title={t('rewards.code_hint')}>
+                        {t('rewards.code')}: <code>{red.issued_code}</code>
+                      </span>
+                    )}
                   </div>
                   <div className="reward-row__status">
                     <span className={`badge ${badge.cls}`}>{badge.label}</span>

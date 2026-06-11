@@ -1,32 +1,37 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { getMissions } from '@/api';
+import { getMissions, getMyMissionSubmissions } from '@/api';
 import { MissionCard } from '@/components/missions';
-import type { MissionWithProgress } from '@/types';
+import type { MissionWithProgress, MissionSubmission } from '@/types';
 import { Icons } from '@/components/ui';
 
 export function MissionsPage() {
   const { t } = useTranslation();
   const [missions, setMissions] = useState<MissionWithProgress[]>([]);
+  const [submissions, setSubmissions] = useState<Record<string, MissionSubmission>>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [filter, setFilter] = useState<'all' | 'active' | 'done'>('all');
 
-  useEffect(() => {
-    let cancelled = false;
-    async function load() {
-      try {
-        const data = await getMissions();
-        if (!cancelled) setMissions(data);
-      } catch {
-        if (!cancelled) setError(t('missions.error'));
-      } finally {
-        if (!cancelled) setLoading(false);
+  const load = useCallback(async () => {
+    try {
+      const [data, subs] = await Promise.all([getMissions(), getMyMissionSubmissions().catch(() => ({ items: [], total: 0 }))]);
+      setMissions(data);
+      // Keep the most recent submission per mission.
+      const map: Record<string, MissionSubmission> = {};
+      for (const s of subs.items) {
+        const prev = map[s.mission_id];
+        if (!prev || s.created_at > prev.created_at) map[s.mission_id] = s;
       }
+      setSubmissions(map);
+    } catch {
+      setError(t('missions.error'));
+    } finally {
+      setLoading(false);
     }
-    load();
-    return () => { cancelled = true; };
-  }, []);
+  }, [t]);
+
+  useEffect(() => { load(); }, [load]);
 
   const filtered = missions.filter((m) => {
     if (filter === 'done') return m.progress?.is_completed;
@@ -91,7 +96,12 @@ export function MissionsPage() {
 
       <div className="missions-list">
         {filtered.map((m) => (
-          <MissionCard key={m.mission.id} data={m} />
+          <MissionCard
+            key={m.mission.id}
+            data={m}
+            submission={submissions[m.mission.id]}
+            onSubmitted={load}
+          />
         ))}
       </div>
     </div>

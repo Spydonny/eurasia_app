@@ -71,7 +71,6 @@ export interface ActivityItem {
   type: string;
   title: string;
   description: string;
-  icon: string;
   created_at: string;
 }
 

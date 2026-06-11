@@ -177,6 +177,24 @@ export async function getMissions(): Promise<MissionWithProgress[]> {
   return r.data;
 }
 
+export async function getMyMissionSubmissions(): Promise<{ items: import('@/types').MissionSubmission[]; total: number }> {
+  const r = await client.get('/mission-submissions', { params: { limit: 100 } });
+  return r.data;
+}
+
+export async function submitMissionProof(
+  missionId: string,
+  data: { description?: string; screenshot_url?: string; verification_method?: string },
+): Promise<{ message: string; submission: import('@/types').MissionSubmission }> {
+  const r = await client.post('/mission-submissions', { mission_id: missionId, ...data });
+  return r.data;
+}
+
+export async function redeemMissionCode(missionId: string, code: string): Promise<{ message: string }> {
+  const r = await client.post(`/missions/${missionId}/redeem-code`, { code });
+  return r.data;
+}
+
 // Chat
 export async function getChatRooms(): Promise<ChatRoom[]> {
   const r = await client.get<ChatRoom[]>('/chat/rooms');
@@ -476,7 +494,6 @@ export async function createPartnerReward(
     total_inventory?: number;
     max_per_user?: number;
     requires_approval?: boolean;
-    icon?: string;
   },
 ): Promise<Reward> {
   const r = await client.post<{ reward: Reward }>(`/rewards/partner/${partnerId}`, data);
@@ -501,6 +518,27 @@ export async function reserveReward(rewardId: string): Promise<{ message: string
 
 export async function getMyRedemptions(page = 1, limit = 20): Promise<{ items: RewardRedemption[]; total: number }> {
   const r = await client.get('/rewards/my/redemptions', { params: { page, limit } });
+  return r.data;
+}
+
+// ─── Admin: reward redemption moderation ───
+export async function listAdminRedemptions(status?: string, page = 1, limit = 50): Promise<{ items: RewardRedemption[]; total: number }> {
+  const r = await client.get('/rewards/admin/redemptions', { params: { status, page, limit } });
+  return r.data;
+}
+
+export async function approveRedemption(redemptionId: string): Promise<{ message: string }> {
+  const r = await client.post(`/rewards/admin/redemptions/${redemptionId}/approve`);
+  return r.data;
+}
+
+export async function rejectRedemption(redemptionId: string, notes = ''): Promise<{ message: string }> {
+  const r = await client.post(`/rewards/admin/redemptions/${redemptionId}/reject`, null, { params: { notes } });
+  return r.data;
+}
+
+export async function fulfillRedemption(redemptionId: string): Promise<{ message: string }> {
+  const r = await client.post(`/rewards/admin/redemptions/${redemptionId}/fulfill`);
   return r.data;
 }
 
@@ -621,8 +659,72 @@ export async function updatePartnerStatus(partnerId: string, status: string): Pr
   return r.data;
 }
 
-export async function listAdminMissions(page = 1, limit = 50): Promise<{ items: unknown[]; total: number }> {
+export async function listAdminMissions(page = 1, limit = 50): Promise<{ items: import('@/types').Mission[]; total: number }> {
   const r = await client.get('/admin/missions', { params: { page, limit } });
+  return r.data;
+}
+
+export async function createMission(data: {
+  title: string;
+  description: string;
+  category: string;
+  target_count: number;
+  reward_xp: number;
+  reward_tokens: number;
+  requires_submission?: boolean;
+  verification_code?: string;
+  expires_at?: string;
+}): Promise<import('@/types').Mission> {
+  const r = await client.post('/missions/', data);
+  return r.data;
+}
+
+export async function deleteMission(missionId: string): Promise<{ message: string }> {
+  const r = await client.delete(`/missions/${missionId}`);
+  return r.data;
+}
+
+export async function adminListMissionSubmissions(status?: string, page = 1, limit = 50): Promise<{ items: import('@/types').MissionSubmission[]; total: number }> {
+  const r = await client.get('/mission-submissions', { params: { status, page, limit } });
+  return r.data;
+}
+
+export async function reviewMissionSubmission(submissionId: string, action: 'approve' | 'reject', notes = ''): Promise<{ message: string }> {
+  const status = action === 'approve' ? 'approved' : 'rejected';
+  const r = await client.post(`/mission-submissions/${submissionId}/${action}`, { status, review_notes: notes });
+  return r.data;
+}
+
+// Profile-completion reward rules (admin)
+export async function listProfileRewardRules(): Promise<import('@/types').ProfileRewardRule[]> {
+  const r = await client.get('/admin/profile-reward-rules');
+  return r.data;
+}
+
+export async function createProfileRewardRule(data: {
+  field_name: string;
+  label: string;
+  reward_tokens: number;
+  reward_xp: number;
+  is_active?: boolean;
+}): Promise<import('@/types').ProfileRewardRule> {
+  const r = await client.post('/admin/profile-reward-rules', data);
+  return r.data;
+}
+
+export async function updateProfileRewardRule(ruleId: string, data: Partial<{ label: string; reward_tokens: number; reward_xp: number; is_active: boolean }>): Promise<import('@/types').ProfileRewardRule> {
+  const r = await client.patch(`/admin/profile-reward-rules/${ruleId}`, data);
+  return r.data;
+}
+
+export async function deleteProfileRewardRule(ruleId: string): Promise<{ message: string }> {
+  const r = await client.delete(`/admin/profile-reward-rules/${ruleId}`);
+  return r.data;
+}
+
+// Token operations journal (admin)
+export async function adminListTransactions(params: { user_id?: string; tx_type?: string; limit?: number; skip?: number } = {}): Promise<{ items: import('@/types').AdminTokenTransaction[]; total: number }> {
+  const r = await client.get('/tokens/admin/all', { params: { limit: 100, ...params } });
   return r.data;
 }
 

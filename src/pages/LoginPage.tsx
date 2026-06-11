@@ -32,6 +32,7 @@ export function LoginPage() {
     <div className="auth-page">
       <Card className="auth-form">
         <div className="auth-form__header">
+          <img src="/logo.png" alt={t('app.name')} className="auth-form__logo" />
           <h1 className="auth-form__title">{t('auth.log_in_title')}</h1>
           <p className="auth-form__subtitle">{t('auth.welcome_back')}</p>
         </div>

@@ -2,13 +2,33 @@ export interface Mission {
   id: string;
   title: string;
   description: string;
-  icon: string;
   category: string;
   target_count: number;
   reward_xp: number;
   reward_tokens: number;
+  requires_submission?: boolean;
+  has_code?: boolean;
   is_active: boolean;
+  expires_at?: string;
   created_at: string;
+}
+
+export type MissionSubmissionStatus = 'pending_review' | 'approved' | 'rejected';
+
+export interface MissionSubmission {
+  id: string;
+  user_id: string;
+  mission_id: string;
+  mission_title?: string;
+  description: string;
+  screenshot_url: string;
+  verification_method: string;
+  status: MissionSubmissionStatus;
+  reviewer_id: string;
+  review_notes: string;
+  reviewed_at: string;
+  created_at: string;
+  updated_at: string;
 }
 
 export interface MissionProgress {

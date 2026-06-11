@@ -13,7 +13,10 @@ export function Sidebar() {
   return (
     <aside className="sidebar">
       <div className="sidebar__header">
-        <h1 className="sidebar__title">{t('app.name')}</h1>
+        <div className="sidebar__brand">
+          <img src="/logo_short.png" alt="" className="sidebar__logo" />
+          <h1 className="sidebar__title">{t('app.name')}</h1>
+        </div>
         <span className="sidebar__subtitle">{t('app.subtitle')}</span>
       </div>
 

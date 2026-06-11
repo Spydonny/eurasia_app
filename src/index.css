@@ -584,7 +584,8 @@ h4 { font-size: 0.8125rem; }
   font-weight: 700;
   color: var(--text);
 }
-.auth-form__header { display: flex; flex-direction: column; gap: var(--s-1); }
+.auth-form__header { display: flex; flex-direction: column; align-items: center; text-align: center; gap: var(--s-1); }
+.auth-form__logo { height: 64px; width: auto; object-fit: contain; margin-bottom: var(--s-2); }
 .auth-form__subtitle { color: var(--text-2); font-size: 0.8125rem; }
 .auth-form__submit { width: 100%; margin-top: var(--s-1); }
 .auth-form__footer { text-align: center; font-size: 0.8125rem; color: var(--text-2); }
@@ -807,6 +808,8 @@ h4 { font-size: 0.8125rem; }
   color: var(--text);
   border-bottom: 1px solid var(--border);
 }
+.sidebar__brand { display: flex; align-items: center; gap: var(--s-2); }
+.sidebar__logo { height: 36px; width: auto; object-fit: contain; }
 .sidebar__title { font-size: 1.125rem; font-weight: 700; }
 .sidebar__subtitle { font-size: 0.6875rem; color: var(--text-3); margin-top: 2px; }
 .sidebar__nav { flex: 1; padding: var(--s-2); display: flex; flex-direction: column; gap: 2px; overflow-y: auto; }
@@ -1009,6 +1012,10 @@ h4 { font-size: 0.8125rem; }
 .mission-card--done .mission-card__fill { background: var(--success); }
 .mission-card__count { font-size: 0.8125rem; font-weight: 600; color: var(--text-2); white-space: nowrap; min-width: 64px; text-align: right; }
 .mission-card__rewards { display: flex; gap: var(--s-2); flex-wrap: wrap; }
+.mission-card__submission { display: flex; flex-direction: column; gap: var(--s-2); align-items: flex-start; margin-top: var(--s-3); padding-top: var(--s-3); border-top: 1px solid var(--border); }
+.mission-card__form { width: 100%; }
+.redemption-code { font-size: 0.6875rem; color: var(--text-2); display: inline-flex; align-items: center; gap: 4px; }
+.redemption-code code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-weight: 700; color: var(--text); background: var(--surface); padding: 1px 6px; border-radius: var(--r-sm); letter-spacing: 0.04em; }
 .mission-card__reward {
   font-size: 0.6875rem;
   font-weight: 600;
@@ -1244,7 +1251,9 @@ h4 { font-size: 0.8125rem; }
 .item-card:hover { border-color: var(--border-strong); }
 .item-card--owned { border-color: var(--success); }
 .item-card--owned .item-card__icon { opacity: 0.7; }
-.item-card__icon { font-size: 2.25rem; line-height: 1; }
+.item-card__icon { font-size: 2.25rem; line-height: 1; display: flex; align-items: center; justify-content: center; min-height: 96px; }
+.item-card__image { width: 100%; max-width: 140px; height: 96px; object-fit: contain; }
+.purchase-item__image { width: 40px; height: 40px; object-fit: contain; display: block; }
 .item-card__name { font-size: 0.9375rem; font-weight: 700; margin: 0; }
 .item-card__desc { font-size: 0.8125rem; color: var(--text-3); margin: 0; flex: 1; }
 .item-card__meta { display: flex; justify-content: center; gap: var(--s-3); font-size: 0.75rem; width: 100%; align-items: center; }
@@ -1586,4 +1595,41 @@ h4 { font-size: 0.8125rem; }
 .translatable__toggle:hover {
   opacity: 1;
   text-decoration: underline;
+}
+
+/* ============================================================
+   Рандомная перекраска акцентов интерфейса.
+   Часть компонентов, использовавших основной фиолетовый
+   (#511CE9), перекрашена в #F30C42 / #88B04B / #FAD000.
+   Контраст: жёлтый — только заливки/точки/слабый фон.
+   ============================================================ */
+
+/* — Красный #F30C42 (сплошная заливка, белый текст) — */
+.btn--primary { background: #F30C42; }
+.btn--primary:hover:not(:disabled) { background: #d40a3a; }
+.chat-bubble--own { background: #F30C42; }
+.event-filter-btn--active,
+.filter-tab--active { background: #F30C42; border-color: #F30C42; }
+
+/* — Зелёный #88B04B (акцентный текст / заливки) — */
+a { color: #88B04B; }
+a:hover { color: #6f9439; }
+.tab--active { color: #88B04B; border-bottom-color: #88B04B; }
+.bottom-nav__link--active { color: #88B04B; }
+.sidebar__link--active {
+  background: #eef4e2;
+  color: #88B04B;
+  border-left-color: #88B04B;
+}
+.mission-card__fill { background: #88B04B; }
+.toggle--on { background: #88B04B; }
+
+/* — Жёлтый #FAD000 (точки / границы / слабый фон, тёмный текст) — */
+.notification-card__dot { background: #FAD000; }
+.notification-card--unread { border-left-color: #FAD000; }
+.notification-item--unread { background: #fdf6cc; }
+.quick-action:hover {
+  border-color: #FAD000;
+  background: #fdf6cc;
+  color: #7a6a00;
 }
