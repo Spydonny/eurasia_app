@@ -554,6 +554,27 @@ export async function confirmParticipation(eventId: string, userId: string): Pro
   return r.data;
 }
 
+export async function getEventQrCode(
+  eventId: string,
+): Promise<{ qr_code: string; event_id: string; user_id: string }> {
+  const r = await client.get<{ qr_code: string; event_id: string; user_id: string }>(
+    `/events/${eventId}/qr-code`,
+  );
+  return r.data;
+}
+
+export async function verifyEventQr(
+  eventId: string,
+  qrCode: string,
+): Promise<{ message: string; user_id: string }> {
+  const r = await client.post<{ message: string; user_id: string }>(
+    `/events/${eventId}/verify-qr`,
+    null,
+    { params: { qr_code: qrCode } },
+  );
+  return r.data;
+}
+
 export async function moderateEvent(
   eventId: string,
   action: 'approve' | 'reject',

@@ -48,6 +48,9 @@ export const Icons = {
   navNotifications: Bell,
   navProfile: User,
   navAdmin: ShieldStar,
+  navMore: DotsThree,
+  language: Globe,
+  close: X,
 
   // ── Auth / Onboarding ──
   login: SignIn,

@@ -6,6 +6,7 @@ import type { Event, EventParticipant } from '@/types';
 import { hasMinRole } from '@/types';
 import * as api from '@/api';
 import { CategoryIcons, Icons, TranslatableText } from '@/components/ui';
+import { QRCodeModal, QRScannerModal } from '@/components/events';
 
 export function EventDetailPage() {
   const { t, i18n } = useTranslation();
@@ -17,6 +18,8 @@ export function EventDetailPage() {
   const [loading, setLoading] = useState(true);
   const [actionLoading, setActionLoading] = useState(false);
   const [manageMsg, setManageMsg] = useState('');
+  const [showQr, setShowQr] = useState(false);
+  const [showScanner, setShowScanner] = useState(false);
 
   const load = async () => {
     if (!id) return;
@@ -225,9 +228,24 @@ export function EventDetailPage() {
           </Link>
         )}
 
+        {event.is_joined && !isOwner && (
+          <button
+            className="btn btn--ghost"
+            style={{ marginTop: 12, width: '100%' }}
+            onClick={() => setShowQr(true)}
+          >
+            <Icons.online size={16} /> {t('events.qr.show_my')}
+          </button>
+        )}
+
         {isOwner && participants.length > 0 && (
           <div className="event-detail__section" style={{ marginTop: 24 }}>
-            <h3 className="event-detail__section-title">{t('events.detail.manage_participants')}</h3>
+            <div className="event-detail__manage-header">
+              <h3 className="event-detail__section-title" style={{ marginBottom: 0 }}>{t('events.detail.manage_participants')}</h3>
+              <button className="btn btn--primary btn--sm" onClick={() => setShowScanner(true)}>
+                <Icons.online size={16} /> {t('events.qr.scan')}
+              </button>
+            </div>
             {manageMsg && <div className="alert alert--success">{manageMsg}</div>}
             <div className="token-history">
               {participants.map((p) => (
@@ -253,6 +271,15 @@ export function EventDetailPage() {
           </div>
         )}
       </div>
+
+      {showQr && id && <QRCodeModal eventId={id} onClose={() => setShowQr(false)} />}
+      {showScanner && id && (
+        <QRScannerModal
+          eventId={id}
+          onClose={() => setShowScanner(false)}
+          onVerified={() => { void load(); }}
+        />
+      )}
     </div>
   );
 }

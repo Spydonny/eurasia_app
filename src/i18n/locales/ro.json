@@ -42,7 +42,8 @@
     "friends": "Prieteni",
     "achievements": "Realizări",
     "leaderboard": "Clasament",
-    "notifications": "Notificări"
+    "notifications": "Notificări",
+    "more": "Ещё"
   },
   "common": {
     "loading": "Se încarcă...",
@@ -175,7 +176,20 @@
       "pending_review": "În așteptare",
       "rejected": "Respins"
     },
-    "create_pending_approval": "Contul tău așteaptă aprobarea administratorului. Vei putea crea evenimente după aprobare."
+    "create_pending_approval": "Contul tău așteaptă aprobarea administratorului. Vei putea crea evenimente după aprobare.",
+    "qr": {
+      "show_my": "Показать мой QR-код",
+      "my_title": "Ваш QR-код для отметки",
+      "my_hint": "Покажите этот код организатору, чтобы подтвердить участие.",
+      "load_error": "Не удалось получить QR-код",
+      "scan": "Сканировать QR",
+      "scanner_title": "Сканирование QR-кода",
+      "scanner_hint": "Наведите камеру на QR-код участника.",
+      "scan_success": "Участие подтверждено",
+      "scan_error": "Не удалось распознать код или участие уже подтверждено",
+      "scan_next": "Сканировать ещё",
+      "camera_error": "Нет доступа к камере. Разрешите доступ в настройках браузера."
+    }
   },
   "category": {
     "all": "Toate",

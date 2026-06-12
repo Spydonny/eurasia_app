@@ -111,7 +111,7 @@ export function EditEventPage() {
           </select>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+        <div className="form-grid-2">
           <Input label={t('events.fields.start_date')} type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} required />
           <Input label={t('events.fields.start_time')} type="time" value={startTime} onChange={(e) => setStartTime(e.target.value)} required />
         </div>
