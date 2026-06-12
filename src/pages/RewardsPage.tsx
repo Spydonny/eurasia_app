@@ -2,8 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { listRewards, reserveReward, getMyRedemptions } from '@/api';
 import type { Reward, RewardRedemption } from '@/types';
-import { REWARD_TYPE_LABELS } from '@/types';
-import { Icons } from '@/components/ui';
+import { Icons, TranslatableText } from '@/components/ui';
 
 /** Map a redemption status to a functional badge variant. */
 function statusBadge(status: string): { cls: string; label: string } {
@@ -114,26 +113,26 @@ export function RewardsPage() {
 
                   <div className="reward-row__body">
                     <div className="reward-row__head">
-                      <span className="reward-row__name">{reward.name}</span>
+                      <TranslatableText as="span" className="reward-row__name" text={reward.name} />
                       {soldOut ? (
                         <span className="badge badge--error">{t('rewards.sold_out')}</span>
                       ) : unavailable ? (
-                        <span className="badge badge--neutral">Unavailable</span>
+                        <span className="badge badge--neutral">{t('rewards.unavailable')}</span>
                       ) : lowStock ? (
                         <span className="badge badge--warning">
                           {reward.remaining_inventory} {t('partner.left')}
                         </span>
                       ) : (
-                        <span className="badge badge--success">Available</span>
+                        <span className="badge badge--success">{t('rewards.available')}</span>
                       )}
                     </div>
                     <div className="reward-row__meta">
-                      <span className="tag">{REWARD_TYPE_LABELS[reward.type] || reward.type}</span>
+                      <span className="tag">{t(`reward_type.${reward.type}`, reward.type)}</span>
                       <span style={{ display: 'inline-flex', alignItems: 'center', gap: 3 }}><Icons.balance size={13} /> {reward.price_tokens}</span>
                       {reward.partner_name && <span>· {reward.partner_name}</span>}
                     </div>
                     {reward.description && (
-                      <p className="reward-row__desc">{reward.description}</p>
+                      <TranslatableText as="p" className="reward-row__desc" text={reward.description} />
                     )}
                   </div>
 
@@ -168,7 +167,7 @@ export function RewardsPage() {
               return (
                 <div key={red.id} className="token-row">
                   <div className="token-row__info">
-                    <span className="token-row__type">{red.reward_name}</span>
+                    <TranslatableText as="span" className="token-row__type" text={red.reward_name} />
                     <span className="token-row__desc" style={{ display: 'inline-flex', alignItems: 'center', gap: 3 }}><Icons.balance size={12} /> {red.price_paid}</span>
                     {red.issued_code && (
                       <span className="redemption-code" title={t('rewards.code_hint')}>

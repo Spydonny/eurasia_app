@@ -1,4 +1,28 @@
 {
+  "role": {
+    "volunteer": "Волонтёр",
+    "organization": "Организация",
+    "partner": "Партнёр",
+    "admin": "Администратор"
+  },
+  "item_type": {
+    "badge": "Значки",
+    "title": "Титулы",
+    "powerup": "Усиления",
+    "customization": "Оформление",
+    "merch": "Мерч"
+  },
+  "reward_type": {
+    "discount": "Скидка",
+    "product": "Товар",
+    "service": "Услуга",
+    "event_access": "Доступ к событию",
+    "trip": "Поездка",
+    "education_program": "Образовательная программа",
+    "merch": "Мерч",
+    "partner_offer": "Партнёрское предложение",
+    "special": "Особое"
+  },
   "app": {
     "name": "Евразия",
     "subtitle": "Волонтёрская платформа"
@@ -413,7 +437,9 @@
     "reserve": "Обменять",
     "sold_out": "Закончилось",
     "load_failed": "Не удалось загрузить награды",
-    "reserve_failed": "Не удалось обменять"
+    "reserve_failed": "Не удалось обменять",
+    "available": "Доступно",
+    "unavailable": "Недоступно"
   },
   "org": {
     "register_title": "Регистрация организации",

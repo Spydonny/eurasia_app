@@ -10,10 +10,13 @@ import {
   createPartnerReward,
 } from '@/api';
 import type { Partner, Reward, RewardRedemption } from '@/types';
-import { REWARD_TYPE_LABELS } from '@/types';
 import { Button, Input, Icons } from '@/components/ui';
 
 const EMPTY_CONTACT = { contact_email: '', contact_phone: '', city: '', website: '' };
+const REWARD_TYPES = [
+  'discount', 'product', 'service', 'event_access', 'trip',
+  'education_program', 'merch', 'partner_offer', 'special',
+] as const;
 
 /**
  * Partner profile/dashboard. Rendered inside /profile for partner accounts.
@@ -195,8 +198,8 @@ export function PartnerDashboardPage() {
           <div className="input__wrapper">
             <label className="input__label">{t('partner.reward_type')}</label>
             <select className="input" value={rewardForm.type} onChange={(e) => setRewardForm({ ...rewardForm, type: e.target.value })}>
-              {Object.entries(REWARD_TYPE_LABELS).map(([k, v]) => (
-                <option key={k} value={k}>{v}</option>
+              {REWARD_TYPES.map((k) => (
+                <option key={k} value={k}>{t(`reward_type.${k}`, k)}</option>
               ))}
             </select>
           </div>

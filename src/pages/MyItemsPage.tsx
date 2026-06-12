@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { getMyPurchases } from '@/api';
 import type { Purchase } from '@/types';
-import { ITEM_TYPE_LABELS, ITEM_TYPE_ICONS } from '@/types';
-import { Icons } from '@/components/ui';
+import { ITEM_TYPE_ICONS } from '@/types';
+import { Icons, TranslatableText } from '@/components/ui';
 
 export function MyItemsPage() {
   const { t } = useTranslation();
@@ -48,8 +48,8 @@ export function MyItemsPage() {
               {p.image ? <img src={p.image} alt={p.item_name} className="purchase-item__image" /> : (ITEM_TYPE_ICONS[p.item_type] || '🎁')}
             </span>
             <div className="purchase-item__info">
-              <div className="purchase-item__name">{p.item_name}</div>
-              <div className="purchase-item__type">{ITEM_TYPE_LABELS[p.item_type] || p.item_type}</div>
+              <TranslatableText as="div" className="purchase-item__name" text={p.item_name} />
+              <div className="purchase-item__type">{t(`item_type.${p.item_type}`, p.item_type)}</div>
             </div>
             <div className="purchase-item__price" style={{ display: 'inline-flex', alignItems: 'center', gap: 3 }}>-{p.price_paid} <Icons.balance size={13} /></div>
             <div className="purchase-item__date">

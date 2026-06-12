@@ -92,17 +92,41 @@ export function FriendsPage() {
   }, [activeTab, loadFriends]);
 
   const handleSearch = useCallback(async () => {
-    if (!searchQuery.trim()) {
+    const q = searchQuery.trim();
+    if (!q) {
       setSearchResults([]);
       return;
     }
     try {
-      const results = await searchUsers(searchQuery);
+      const results = await searchUsers(q);
       setSearchResults(results);
     } catch {
       setSearchResults([]);
     }
   }, [searchQuery]);
+
+  // Debounced live search as the user types (the button/Enter still search immediately).
+  useEffect(() => {
+    if (activeTab !== 'search') return;
+    const q = searchQuery.trim();
+    if (!q) {
+      setSearchResults([]);
+      return;
+    }
+    let cancelled = false;
+    const timer = setTimeout(async () => {
+      try {
+        const results = await searchUsers(q);
+        if (!cancelled) setSearchResults(results);
+      } catch {
+        if (!cancelled) setSearchResults([]);
+      }
+    }, 300);
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
+  }, [searchQuery, activeTab]);
 
   const handleSendRequest = async (userId: string) => {
     try {

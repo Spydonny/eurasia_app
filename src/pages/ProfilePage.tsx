@@ -1,7 +1,7 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '@/hooks/useAuth';
-import { ROLE_LABELS, type ActivityItem, type ProfileResponse } from '@/types';
+import { type ActivityItem, type ProfileResponse } from '@/types';
 import * as api from '@/api';
 import { Link } from 'react-router-dom';
 import { OrganizationDashboardPage } from './OrganizationDashboardPage';
@@ -68,7 +68,7 @@ function VolunteerProfile() {
         <div className="profile__info">
           <h1 className="profile__display-name">{profile.display_name}</h1>
           <div className="profile__username">@{profile.username}</div>
-          <div className="profile__role">{ROLE_LABELS[profile.role]}</div>
+          <div className="profile__role">{t(`role.${profile.role}`)}</div>
         </div>
         <Link to="/profile/edit" className="btn btn--ghost btn--sm">{t('profile.edit')}</Link>
       </div>

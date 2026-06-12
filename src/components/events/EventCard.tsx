@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import type { Event } from '@/types';
-import { CategoryIcons, Icons } from '@/components/ui';
+import { CategoryIcons, Icons, TranslatableText } from '@/components/ui';
 
 export function EventCard({ event }: { event: Event }) {
   const { t, i18n } = useTranslation();
@@ -42,10 +42,10 @@ export function EventCard({ event }: { event: Event }) {
           </div>
         </div>
 
-        <h3 className="event-card__title">{event.title}</h3>
+        <h3 className="event-card__title"><TranslatableText as="span" text={event.title} /></h3>
 
         {event.short_description && (
-          <p className="event-card__desc">{event.short_description}</p>
+          <TranslatableText as="p" className="event-card__desc" text={event.short_description} />
         )}
 
         <div className="event-card__footer">

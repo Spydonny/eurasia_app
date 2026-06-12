@@ -153,9 +153,3 @@ export function hasMinRole(userRole: UserRole, minRole: UserRole): boolean {
   return ROLE_HIERARCHY[userRole] >= ROLE_HIERARCHY[minRole];
 }
 
-export const ROLE_LABELS: Record<UserRole, string> = {
-  volunteer: 'Volunteer',
-  organization: 'Organization',
-  partner: 'Partner',
-  admin: 'Admin',
-};

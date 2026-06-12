@@ -4,8 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { listMarketplaceItems, buyMarketplaceItem, getMyPurchases, getTokenBalance } from '@/api';
 import { useAuth } from '@/hooks/useAuth';
 import type { MarketplaceItem } from '@/types';
-import { ITEM_TYPE_LABELS, ITEM_TYPE_ICONS } from '@/types';
-import { Icons } from '@/components/ui';
+import { ITEM_TYPE_ICONS } from '@/types';
+import { Icons, TranslatableText } from '@/components/ui';
 
 const TYPES = ['', 'badge', 'title', 'powerup', 'customization'];
 
@@ -79,7 +79,7 @@ export function MarketplacePage() {
             className={`filter-tab ${filter === type ? 'filter-tab--active' : ''}`}
             onClick={() => setFilter(type)}
           >
-            {type ? (ITEM_TYPE_LABELS[type] || type) : t('marketplace.filter_all')}
+            {type ? t(`item_type.${type}`, type) : t('marketplace.filter_all')}
           </button>
         ))}
       </div>
@@ -108,11 +108,11 @@ export function MarketplacePage() {
                     ITEM_TYPE_ICONS[item.type] || '🎁'
                   )}
                 </div>
-                <h3 className="item-card__name">{item.name}</h3>
-                <p className="item-card__desc">{item.description}</p>
+                <h3 className="item-card__name"><TranslatableText as="span" text={item.name} /></h3>
+                <TranslatableText as="p" className="item-card__desc" text={item.description} />
 
                 <div className="item-card__meta">
-                  <span className="item-card__type">{ITEM_TYPE_LABELS[item.type] || item.type}</span>
+                  <span className="item-card__type">{t(`item_type.${item.type}`, item.type)}</span>
                   <span className="item-card__price" style={{ display: 'inline-flex', alignItems: 'center', gap: 3 }}><Icons.balance size={13} /> {item.price}</span>
                 </div>
 

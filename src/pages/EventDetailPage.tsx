@@ -139,7 +139,7 @@ export function EventDetailPage() {
           <div className="alert" style={{ marginBottom: 16 }}>{t('events.detail.pending_review_note')}</div>
         )}
 
-        <h1 className="event-detail__title">{event.title}</h1>
+        <h1 className="event-detail__title"><TranslatableText as="span" text={event.title} /></h1>
         <p className="event-detail__creator">{t('events.detail.by', { creator: event.creator_name })}</p>
 
         <div className="event-detail__info-grid">

@@ -1,7 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '@/hooks/useAuth';
-import { ROLE_LABELS } from '@/types';
 import { getNavItemsForRole } from '@/config/navigation';
 import { Icons } from '@/components/ui';
 
@@ -42,7 +41,7 @@ export function Sidebar() {
       <div className="sidebar__footer">
         <div>
           <span className="sidebar__user-name">{user?.username || t('common.guest')}</span>
-          <span className="sidebar__user-role">{user ? ROLE_LABELS[user.role] : <Icons.privacy size={12} />}</span>
+          <span className="sidebar__user-role">{user ? t(`role.${user.role}`) : <Icons.privacy size={12} />}</span>
         </div>
         <button className="btn btn--ghost btn--sm" onClick={logout}>
           {t('common.logout')}

@@ -19,14 +19,6 @@ export interface Purchase {
   created_at: string;
 }
 
-export const ITEM_TYPE_LABELS: Record<string, string> = {
-  badge: 'Бейджи',
-  title: 'Титулы',
-  powerup: 'Усиления',
-  customization: 'Оформление',
-  merch: 'Мерч',
-};
-
 export const ITEM_TYPE_ICONS: Record<string, string> = {
   badge: '🏅',
   title: '👑',

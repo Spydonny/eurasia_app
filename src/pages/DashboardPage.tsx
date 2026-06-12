@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '@/hooks/useAuth';
 import { TokenWidget, Icons, RoleIcons, type IconType } from '@/components/ui';
-import { ROLE_LABELS } from '@/types';
 import type { ActivityItem } from '@/types';
 import { Link } from 'react-router-dom';
 import * as api from '@/api';
@@ -34,7 +33,7 @@ function HeroSection({ user }: { user: NonNullable<ReturnType<typeof useAuth>['u
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', position: 'relative', zIndex: 1 }}>
         <div>
           <h1 className="hero__title">{t('dashboard.hero_title', { username: user.username })}</h1>
-          <p className="hero__subtitle">{ROLE_LABELS[user.role]} · Level {user.level ?? 1}</p>
+          <p className="hero__subtitle">{t(`role.${user.role}`)} · {t('dashboard.level')} {user.level ?? 1}</p>
         </div>
         <TokenWidget />
       </div>
@@ -58,7 +57,7 @@ function StatsRow({ user }: { user: NonNullable<ReturnType<typeof useAuth>['user
         <div className="stat-card__value">
           {(() => { const RoleIcon = RoleIcons[user.role] || Icons.profile; return <RoleIcon size={22} />; })()}
         </div>
-        <div className="stat-card__label">{ROLE_LABELS[user.role]}</div>
+        <div className="stat-card__label">{t(`role.${user.role}`)}</div>
       </div>
     </div>
   );

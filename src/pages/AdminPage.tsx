@@ -32,7 +32,7 @@ import {
   deleteProfileRewardRule,
   adminListTransactions,
 } from '@/api';
-import { ROLE_LABELS, UserRole } from '@/types';
+import { UserRole } from '@/types';
 import type { AuthUser, Event, Organization, Partner, RewardRedemption, Mission, MissionSubmission, ProfileRewardRule, AdminTokenTransaction } from '@/types';
 
 const MISSION_CATEGORIES = ['event_attend', 'event_create', 'xp_earn', 'tokens_earn', 'tokens_spend', 'friend_add', 'profile_complete'];
@@ -414,11 +414,11 @@ export function AdminPage() {
                       className="admin-table__select"
                     >
                       {VALID_ROLES.map((r) => (
-                        <option key={r} value={r}>{ROLE_LABELS[r]}</option>
+                        <option key={r} value={r}>{t(`role.${r}`)}</option>
                       ))}
                     </select>
                   </span>
-                  <span className="admin-table__cell">{ROLE_LABELS[u.role]}</span>
+                  <span className="admin-table__cell">{t(`role.${u.role}`)}</span>
                 </div>
               ))}
             </div>

@@ -47,18 +47,6 @@ export interface RewardRedemption {
   updated_at: string;
 }
 
-export const REWARD_TYPE_LABELS: Record<string, string> = {
-  discount: 'Discount',
-  product: 'Product',
-  service: 'Service',
-  event_access: 'Event Access',
-  trip: 'Trip',
-  education_program: 'Education Program',
-  merch: 'Merch',
-  partner_offer: 'Partner Offer',
-  special: 'Special',
-};
-
 export const REWARD_TYPE_ICONS: Record<string, string> = {
   discount: '🏷️',
   product: '📦',

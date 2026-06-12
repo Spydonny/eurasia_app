@@ -14,12 +14,12 @@ export type {
   CreateEventRequest,
   EventParticipant,
 } from './user';
-export { ROLE_HIERARCHY, hasMinRole, ROLE_LABELS } from './user';
+export { ROLE_HIERARCHY, hasMinRole } from './user';
 export type { Mission, MissionProgress, MissionWithProgress, MissionSubmission, MissionSubmissionStatus } from './mission';
 export type { ProfileRewardRule, AdminTokenTransaction } from './admin';
 export type { ChatRoom, ChatMessage } from './chat';
 export type { MarketplaceItem, Purchase } from './marketplace';
-export { ITEM_TYPE_LABELS, ITEM_TYPE_ICONS } from './marketplace';
+export { ITEM_TYPE_ICONS } from './marketplace';
 export type { Notification } from './notification';
 export { NOTIFICATION_ICONS } from './notification';
 
@@ -31,6 +31,6 @@ export type { PrivacySettings, PrivacySettingsUpdate } from './privacy';
 export type { Organization, OrganizationMember, CreateOrganizationRequest } from './organization';
 export type { Partner, CreatePartnerRequest } from './partner';
 export type { Reward, RewardRedemption, RewardType } from './reward';
-export { REWARD_TYPE_LABELS, REWARD_TYPE_ICONS } from './reward';
+export { REWARD_TYPE_ICONS } from './reward';
 export type { Dispute, DisputeComment, CreateDisputeRequest } from './dispute';
 export type { Report, CreateReportRequest } from './report';
