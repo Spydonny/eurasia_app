@@ -14,7 +14,7 @@ export function Sidebar() {
       <div className="sidebar__header">
         <div className="sidebar__brand">
           <img src="/logo_short.png" alt="" className="sidebar__logo" />
-          <h1 className="sidebar__title">{t('app.name')}</h1>
+          <h1 className="sidebar__title">Евразия</h1>
         </div>
         <span className="sidebar__subtitle">{t('app.subtitle')}</span>
       </div>
